@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programmer's Day // 13.09.2026</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050706;color:#c9f7cc;font-family:"Courier New",monospace}
+body{display:flex;justify-content:center;align-items:center;padding:24px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px)}
+.terminal{width:min(920px,94vw);min-height:650px;border:1px solid #315b37;border-radius:12px;background:#090d0a;box-shadow:0 0 55px rgba(80,255,100,.08);padding:30px;position:relative}
+.topbar{color:#608066;font-size:13px;margin-bottom:25px}.prompt{color:#86ff8d}.dim{color:#6b806e}
+.screen{display:none;animation:fade .35s ease}.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(27px,6vw,52px);margin:20px 0 8px;letter-spacing:2px}
+.subtitle{color:#93a996;line-height:1.65}
+button{font:inherit;color:#bfffc2;background:#0a110b;border:1px solid #4a8451;padding:12px 18px;margin:8px 6px 0 0;border-radius:6px;cursor:pointer}
+button:hover{background:#15301a;box-shadow:0 0 15px rgba(100,255,100,.08)}
+.progress{color:#6e9673;margin-bottom:20px}.question{font-size:19px;line-height:1.65;margin:24px 0}
+.option{display:block;width:100%;text-align:left;margin:9px 0}
+.feedback{min-height:58px;margin-top:17px;line-height:1.55;color:#8cff94}.error{color:#ff8d8d}
+.codebox{border:1px solid #263e29;border-radius:7px;padding:18px;background:#060906;margin:18px 0;color:#a9d9ad}
+.checklist{margin:22px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.item{border:1px solid #294a2f;padding:14px;border-radius:7px;cursor:pointer;color:#91a194;user-select:none}
+.item.selected{border-color:#75e87e;color:#c0ffc3;background:#102016}.item:before{content:"[ ] "}.item.selected:before{content:"[✓] "}
+.drag-area{border:1px dashed #466f4b;min-height:100px;padding:18px;text-align:center;color:#78977c;margin:18px 0}
+.palette{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.chip{border:1px solid #365c3b;padding:9px 11px;border-radius:5px;cursor:grab}
+.chip.used{opacity:.35;cursor:default}.dropped{color:#aaffaa}
+.big{font-size:clamp(85px,19vw,160px);text-align:center;color:#aaffaa;margin:15px 0;text-shadow:0 0 28px rgba(100,255,100,.25)}
+.center{text-align:center}.secret{margin-top:28px;border-top:1px solid #263c29;padding-top:22px}
+.location{border:1px solid #355b3a;padding:18px;margin:22px auto;max-width:580px;text-align:left;background:#080e09}
+.location strong{color:#baffbe}.blink{animation:blink 1s steps(2,start) infinite}@keyframes blink{50%{opacity:.25}}
+@media(max-width:600px){.terminal{padding:21px;min-height:620px}body{padding:12px}}
+</style>
+</head>
+<body>
+<main class="terminal">
+<div class="topbar"><span class="prompt">nelly@localhost</span>:~$ ./programmer_day.exe</div>
+
+<section id="screen0" class="screen active">
+<div class="dim">BOOT SEQUENCE // 13.09.2026</div>
+<h1>PROGRAMMER.EXE</h1>
+<p class="subtitle">
+&gt; initializing...<br>
+&gt; loading coding skills............. <span class="prompt">OK</span><br>
+&gt; loading caffeine dependency....... <span class="prompt">OK</span><br>
+&gt; loading social skills............. <span class="error">WARNING</span><br>
+&gt; loading charm..................... <span class="prompt">OVERLOADED</span><br><br>
+&gt; programmer detected.
+</p>
+<div class="codebox" id="typing"></div>
+<button onclick="showScreen(1)">[ ENTER SYSTEM ]</button>
+</section>
+
+<section id="screen1" class="screen">
+<div class="progress">TASK 01 / 03 // SYSTEM BEHAVIOUR</div>
+<div class="question">
+Whenever something is <i>way too enjoyable</i>, she says:
+<br><br><strong>"It is illegal."</strong>
+<br><br>What should the system do?
+</div>
+<button class="option" onclick="wrong(1)">A) Call the police</button>
+<button class="option" onclick="wrong(1)">B) Report the bug</button>
+<button class="option" onclick="wrong(1)">C) Accept the legal consequences</button>
+<button class="option" onclick="correct(1)">D) Make it even more illegal</button>
+<div id="feedback1" class="feedback"></div>
+</section>
+
+<section id="screen2" class="screen">
+<div class="progress">TASK 02 / 03 // OBJECT IDENTIFICATION</div>
+<div class="question">
+A certain techno track has been assigned a highly specific variable.
+</div>
+<div class="codebox">const techno_sh = ???;</div>
+<div class="question">What is the correct value?</div>
+<button class="option" onclick="wrong(2)">A) "A random techno song"</button>
+<button class="option" onclick="wrong(2)">B) "A song that should come with a warning"</button>
+<button class="option" onclick="wrong(2)">C) undefined</button>
+<button class="option" onclick="correct(2)">D) him</button>
+<div id="feedback2" class="feedback"></div>
+</section>
+
+<section id="screen3" class="screen">
+<div class="progress">TASK 03 / 03 // BUILD SYSTEM</div>
+<div class="question">
+Compile the perfect <strong>"Ы"</strong> by selecting <b>all six dependencies</b>.
+</div>
+<div class="checklist">
+<div class="item" onclick="toggle(this)">Beautiful place</div>
+<div class="item" onclick="toggle(this)">Delicious food</div>
+<div class="item" onclick="toggle(this)">Kisses</div>
+<div class="item" onclick="toggle(this)">KitKat</div>
+<div class="item" onclick="toggle(this)">Attention</div>
+<div class="item" onclick="toggle(this)">Planning</div>
+</div>
+<button onclick="compileY()">[ COMPILE Ы.EXE ]</button>
+<div id="feedback3" class="feedback"></div>
+</section>
+
+<section id="screen4" class="screen center">
+<div class="dim">ROOT ACCESS GRANTED</div>
+<div class="big">Ы</div>
+<p class="subtitle">All required dependencies successfully installed.</p>
+<div class="location">
+<strong>PROGRAMMER'S DAY EVENT</strong><br><br>
+Location: <strong>Dionysos Restaurant, Vilnius</strong><br>
+Date: <strong>13.09.2026</strong><br>
+Time: <strong>19:00</strong><br><br>
+Bring yourself and good vibe.
+</div>
+<div class="secret">
+<p><span class="prompt">RESULT:</span> PERFECTLY COMPILED</p>
+<p>Happy Programmer's Day.</p>
+<p class="dim">Now comes the non-digital part.<span class="blink">_</span></p>
+</div>
+</section>
+</main>
+
+<script>
+let current=0;
+const selected=new Set();
+const required=["Beautiful place","Delicious food","Kisses","KitKat","Attention","Planning"];
+
+const bootLines=[
+"> checking compatibility... OK",
+"> checking nerdiness... OK",
+"> checking vibe... EXCELLENT",
+"> searching for reward... FOUND"
+];
+let i=0;
+function typeBoot(){
+ if(i<bootLines.length){
+   document.getElementById("typing").innerHTML += bootLines[i++]+"<br>";
+   setTimeout(typeBoot,420);
+ }
+}
+typeBoot();
+
+function showScreen(n){
+ document.getElementById("screen"+current).classList.remove("active");
+ current=n;
+ document.getElementById("screen"+current).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function wrong(task){
+ const box=document.getElementById("feedback"+task);
+ box.className="feedback error";
+ box.innerHTML="ERROR 418: Incorrect.<br>The system has judged your answer. Try again.";
+}
+function correct(task){
+ const box=document.getElementById("feedback"+task);
+ box.className="feedback";
+ box.innerHTML=(task===1
+ ? "✓ Correct. You understand the system suspiciously well."
+ : "✓ Correct. Variable <code>him</code> successfully assigned.")
+ +"<br><button onclick='showScreen("+(task+1)+")'>[ NEXT TASK ]</button>";
+}
+function toggle(el){
+ el.classList.toggle("selected");
+ const name=el.textContent.trim();
+ if(el.classList.contains("selected")) selected.add(name); else selected.delete(name);
+}
+function compileY(){
+ const box=document.getElementById("feedback3");
+ if(required.every(x=>selected.has(x))){
+   showScreen(4);
+ }else{
+   box.className="feedback error";
+   box.innerHTML="COMPILATION FAILED.<br>Ы.EXE is missing dependencies.";
+ }
+}
+</script>
+</body>
+</html>
