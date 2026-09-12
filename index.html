@@ -77,7 +77,7 @@ A certain techno track has been assigned a highly specific variable.
 <button class="option" onclick="wrong(2)">A) "A random techno song"</button>
 <button class="option" onclick="wrong(2)">B) "A song that should come with a warning"</button>
 <button class="option" onclick="wrong(2)">C) undefined</button>
-<button class="option" onclick="correct(2)">D) him</button>
+<button class="option" onclick="correct(2)">D) you</button>
 <div id="feedback2" class="feedback"></div>
 </section>
 
@@ -153,7 +153,7 @@ function correct(task){
  box.className="feedback";
  box.innerHTML=(task===1
  ? "✓ Correct. You understand the system suspiciously well."
- : "✓ Correct. Variable <code>him</code> successfully assigned.")
+ : "✓ Correct. Variable <code>you</code> successfully assigned.")
  +"<br><button onclick='showScreen("+(task+1)+")'>[ NEXT TASK ]</button>";
 }
 function toggle(el){
